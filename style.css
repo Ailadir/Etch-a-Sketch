@@ -1,0 +1,93 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+}
+
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* CSS RESET */
+
+html {
+  background-color: #efede9;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 10% 80% 10%;
+  justify-content: space-between;
+}
+
+header {
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 35;
+  grid-template-rows: 35;
+  align-self: center;
+  height: 80%;
+  width: 50%;
+  background-color: azure;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+}
+
+.paint-pixel {
+  background-color: white;
+  /* margin: 1px; */
+}
