@@ -43,20 +43,6 @@ btnEraser.addEventListener('click', () => {
   currentMode = 'eraser';
 });
 
-//Function to adjust Draw Field size
-function fieldSize() {
-  drawFieldEl.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  drawFieldEl.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-  for (let i = 0; i < size * size; i++) {
-    const createDrawPixel = document.createElement('div');
-    createDrawPixel.className = 'paint-pixel';
-    createDrawPixel.addEventListener('mouseover', draw);
-    createDrawPixel.addEventListener('mousedown', draw);
-    drawFieldEl.appendChild(createDrawPixel);
-  }
-}
-
 //Function to draw on field
 function draw(e) {
   if (e.type === 'mouseover' && !mouseDown) return;
@@ -69,5 +55,19 @@ function draw(e) {
     e.target.style.backgroundColor = '#000000';
   } else if (currentMode === 'eraser') {
     e.target.style.backgroundColor = '#fefefe';
+  }
+}
+
+//Function to adjust Draw Field size
+function fieldSize() {
+  drawFieldEl.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  drawFieldEl.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+  for (let i = 0; i < size * size; i++) {
+    const createDrawPixel = document.createElement('div');
+    createDrawPixel.className = 'paint-pixel';
+    createDrawPixel.addEventListener('mouseover', draw);
+    createDrawPixel.addEventListener('mousedown', draw);
+    drawFieldEl.appendChild(createDrawPixel);
   }
 }
