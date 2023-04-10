@@ -9,6 +9,36 @@ const btnLargeSize = document.getElementById('large-size');
 let size, color, currentMode;
 let mouseDown = false;
 
+//Function to draw on field
+function draw(e) {
+  if (e.type === 'mouseover' && !mouseDown) return;
+  if (currentMode === 'rainbow') {
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+  } else if (currentMode === 'default') {
+    e.target.style.backgroundColor = '#000000';
+  } else if (currentMode === 'eraser') {
+    e.target.style.backgroundColor = '#fefefe';
+  }
+}
+
+//Function to adjust Draw Field size
+function fieldSize() {
+  drawFieldEl.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  drawFieldEl.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+  for (let i = 0; i < size * size; i++) {
+    const createDrawPixel = document.createElement('div');
+    createDrawPixel.className = 'paint-pixel';
+    createDrawPixel.addEventListener('mouseover', draw);
+    createDrawPixel.addEventListener('mousedown', draw);
+    drawFieldEl.appendChild(createDrawPixel);
+  }
+}
+
+
 // Events on-page
 //
 //Events needed for drawing when you click, hold and move your mouse.
@@ -42,32 +72,3 @@ btnDefault.addEventListener('click', () => {
 btnEraser.addEventListener('click', () => {
   currentMode = 'eraser';
 });
-
-//Function to draw on field
-function draw(e) {
-  if (e.type === 'mouseover' && !mouseDown) return;
-  if (currentMode === 'rainbow') {
-    const randomR = Math.floor(Math.random() * 256);
-    const randomG = Math.floor(Math.random() * 256);
-    const randomB = Math.floor(Math.random() * 256);
-    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
-  } else if (currentMode === 'default') {
-    e.target.style.backgroundColor = '#000000';
-  } else if (currentMode === 'eraser') {
-    e.target.style.backgroundColor = '#fefefe';
-  }
-}
-
-//Function to adjust Draw Field size
-function fieldSize() {
-  drawFieldEl.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-  drawFieldEl.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-
-  for (let i = 0; i < size * size; i++) {
-    const createDrawPixel = document.createElement('div');
-    createDrawPixel.className = 'paint-pixel';
-    createDrawPixel.addEventListener('mouseover', draw);
-    createDrawPixel.addEventListener('mousedown', draw);
-    drawFieldEl.appendChild(createDrawPixel);
-  }
-}
