@@ -11,11 +11,24 @@
     <header>
       <h1>Etch-a-Sketch</h1>
     </header>
-    <div class="input_size"><input type="size" id="paint_size" /></div>
-    <main id="drawField"></main>
-    <footer>
-      <p>&copy;</p>
-    </footer>
+    <div class="main">
+      <main id="draw-field"></main>
+      <div id="menu">
+        <div id="color-mode">
+          Color mode:
+          <button id="rainbow">Rainbow</button>
+          <button id="default">Default</button>
+          <button id="eraser">Eraser</button>
+          <!-- <button>Choose color</button> -->
+        </div>
+        <div id="paint-size">
+          Size:
+          <button id="small-size">Small</button>
+          <button id="medium-size">Medium</button>
+          <button id="large-size">Large</button>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
